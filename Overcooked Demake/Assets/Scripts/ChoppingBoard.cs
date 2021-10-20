@@ -11,6 +11,7 @@ public class ChoppingBoard : MonoBehaviour
     private SpriteRenderer CBItemRenderer;
 
     public Sprite ChoppedSprite;
+    public Sprite UnchoppedSprite;
 
     public FoodTypes.item ItemOnBoard;
 
@@ -37,6 +38,7 @@ public class ChoppingBoard : MonoBehaviour
         }
 
         CBItemRenderer = CBItem.GetComponent<SpriteRenderer>();
+        UnchoppedSprite = CBItemRenderer.sprite;
         CBItemRenderer.color = new Color(0f, 0f, 0f, 0f);
 
 
@@ -52,11 +54,31 @@ public class ChoppingBoard : MonoBehaviour
         }
         // if player presses space when something is on the board and nothing is in the players hand
         else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
-                 ItemOnBoard != FoodTypes.item.NONE)
+                 (ItemOnBoard == FoodTypes.item.LETTUCE || ItemOnBoard == FoodTypes.item.TOMATO))
         {
             Chop();
             Debug.Log("Chop");
         }
+        else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
+         (ItemOnBoard == FoodTypes.item.CHOPPED_LETTUCE || ItemOnBoard == FoodTypes.item.CHOPPED_TOMATO))
+        {
+            PlayerInventory.CurrentItem = ItemOnBoard;
+            PlayerInventory.UpdateHand();
+
+            ClearBoard();
+
+
+            Debug.Log("pick up");
+        }
+    }
+
+    void ClearBoard()
+    {
+        ItemOnBoard = FoodTypes.item.NONE;
+        CBItemRenderer.sprite = UnchoppedSprite;
+        CBItemRenderer.color = new Color(0f, 0f, 0f, 0f);
+        chopCount = 0;
+
     }
 
     private void PlaceOnBoard()
@@ -93,6 +115,16 @@ public class ChoppingBoard : MonoBehaviour
         {
             choppingComplete = true;
             CBItemRenderer.sprite = ChoppedSprite;
+            if (ItemOnBoard == FoodTypes.item.LETTUCE)
+            {
+                ItemOnBoard = FoodTypes.item.CHOPPED_LETTUCE;
+            }
+            else if (ItemOnBoard == FoodTypes.item.TOMATO)
+            {
+                ItemOnBoard = FoodTypes.item.CHOPPED_TOMATO;
+            }
+            
+
 
             Debug.Log("item chopped");
         }

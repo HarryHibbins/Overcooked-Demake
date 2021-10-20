@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637703219035830491
-    m_Hash: 1860606031
+      ticks: 637703238208596882
+    m_Hash: 2951611912
   m_LockFileStatus:
     m_FilePath: D:/New Overcooked/Overcooked-Demake/Overcooked Demake/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637703219115585431
-    m_Hash: 476338366
+      ticks: 637703238252954595
+    m_Hash: 1756831560
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,12 +22,12 @@ m_LocalPackages:
 m_ProjectPath: D:/New Overcooked/Overcooked-Demake/Overcooked Demake/Packages
 m_EditorVersion: 2021.1.21f1 (f2d5d3c59f8c)
 m_ResolvedPackages:
-- packageId: com.unity.2d.animation@5.0.7
+- packageId: com.unity.2d.animation@6.0.5
   testable: 0
   isDirectDependency: 1
-  version: 5.0.7
+  version: 6.0.5
   source: 1
-  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.animation@5.0.7
+  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.animation@6.0.5
   assetPath: Packages/com.unity.2d.animation
   name: com.unity.2d.animation
   displayName: 2D Animation
@@ -118,7 +118,7 @@ m_ResolvedPackages:
     verified: 6.0.7
   dependencies:
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.mathematics
     version: 1.1.0
   - name: com.unity.2d.sprite
@@ -161,23 +161,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637637510960000000
+  datePublishedTicks: 637637507290000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 6f9c488e4d487ead34ee4d516f0a2f4a911a8b25
+    revision: 404f29a83b5666c45c2386a031f1f653fc6fd00d
     path: 
   unityLifecycle:
     version: 6.0.5
     nextVersion: 
-- packageId: com.unity.2d.pixel-perfect@4.0.1
+- packageId: com.unity.2d.pixel-perfect@5.0.1
   testable: 0
   isDirectDependency: 1
-  version: 4.0.1
+  version: 5.0.1
   source: 1
-  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.pixel-perfect@4.0.1
+  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.pixel-perfect@5.0.1
   assetPath: Packages/com.unity.2d.pixel-perfect
   name: com.unity.2d.pixel-perfect
   displayName: 2D Pixel Perfect
@@ -238,23 +238,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637328350910000000
+  datePublishedTicks: 637637493430000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 7d7470f4ca0ea8353d4c9640b3b6ae9d1ebd9c1d
+    revision: 404f29a83b5666c45c2386a031f1f653fc6fd00d
     path: 
   unityLifecycle:
     version: 5.0.1
     nextVersion: 
-- packageId: com.unity.2d.psdimporter@4.1.0
+- packageId: com.unity.2d.psdimporter@5.0.4
   testable: 0
   isDirectDependency: 1
-  version: 4.1.0
+  version: 5.0.4
   source: 1
-  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.psdimporter@4.1.0
+  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.psdimporter@5.0.4
   assetPath: Packages/com.unity.2d.psdimporter
   name: com.unity.2d.psdimporter
   displayName: 2D PSD Importer
@@ -320,9 +320,9 @@ m_ResolvedPackages:
     verified: 5.0.6
   dependencies:
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.2d.animation
-    version: 5.0.6
+    version: 6.0.4
   - name: com.unity.2d.sprite
     version: 1.0.0
   resolvedDependencies:
@@ -341,7 +341,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.uielementsnative
     version: 1.0.0
   - name: com.unity.2d.animation
-    version: 5.0.7
+    version: 6.0.5
   - name: com.unity.mathematics
     version: 1.2.1
   - name: com.unity.modules.animation
@@ -362,13 +362,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637594727750000000
+  datePublishedTicks: 637595600020000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 9e7fd5cbe078d004f1e87ecdf3b57436664a690a
+    revision: c6acc0f0e19f89c41e384fa1a602555072cbb8cc
     path: 
   unityLifecycle:
     version: 5.0.4
@@ -427,12 +427,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.0.0
     nextVersion: 
-- packageId: com.unity.2d.spriteshape@5.1.4
+- packageId: com.unity.2d.spriteshape@6.0.1
   testable: 0
   isDirectDependency: 1
-  version: 5.1.4
+  version: 6.0.1
   source: 1
-  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.spriteshape@5.1.4
+  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.2d.spriteshape@6.0.1
   assetPath: Packages/com.unity.2d.spriteshape
   name: com.unity.2d.spriteshape
   displayName: 2D SpriteShape
@@ -516,9 +516,9 @@ m_ResolvedPackages:
   - name: com.unity.mathematics
     version: 1.1.0
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.2d.path
-    version: 4.0.2
+    version: 5.0.0
   - name: com.unity.modules.physics2d
     version: 1.0.0
   resolvedDependencies:
@@ -561,13 +561,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637637511330000000
+  datePublishedTicks: 637595600290000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 6f9c488e4d487ead34ee4d516f0a2f4a911a8b25
+    revision: c6acc0f0e19f89c41e384fa1a602555072cbb8cc
     path: 
   unityLifecycle:
     version: 6.0.1
@@ -741,12 +741,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.9.0
     nextVersion: 
-- packageId: com.unity.ide.rider@2.0.7
+- packageId: com.unity.ide.rider@3.0.7
   testable: 0
   isDirectDependency: 1
-  version: 2.0.7
+  version: 3.0.7
   source: 1
-  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.ide.rider@2.0.7
+  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.ide.rider@3.0.7
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -792,17 +792,11 @@ m_ResolvedPackages:
     - 3.0.7
     verified: 3.0.7
   dependencies:
-  - name: com.unity.test-framework
-    version: 1.1.1
-  resolvedDependencies:
-  - name: com.unity.test-framework
-    version: 1.1.29
   - name: com.unity.ext.nunit
     version: 1.0.6
-  - name: com.unity.modules.imgui
-    version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.ext.nunit
+    version: 1.0.6
   keywords: []
   registry:
     id: main
@@ -816,13 +810,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637334461080000000
+  datePublishedTicks: 637572251600000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
+    revision: 3007c42a679bbe2c082c276e8d79279110964553
     path: 
   unityLifecycle:
     version: 3.0.7
@@ -1223,12 +1217,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 3.0.6
     nextVersion: 
-- packageId: com.unity.timeline@1.4.8
+- packageId: com.unity.timeline@1.5.6
   testable: 0
   isDirectDependency: 1
-  version: 1.4.8
+  version: 1.5.6
   source: 1
-  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.timeline@1.4.8
+  resolvedPath: D:\New Overcooked\Overcooked-Demake\Overcooked Demake\Library\PackageCache\com.unity.timeline@1.5.6
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -1354,13 +1348,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637557616100000000
+  datePublishedTicks: 637613662510000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: 527e4364e28028f20f04fc51db671eb4bb910a26
+    revision: bba45362fa74fde39bfa14d05688da527254b39f
     path: 
   unityLifecycle:
     version: 1.5.6

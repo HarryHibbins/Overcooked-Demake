@@ -11,6 +11,8 @@ public class Worktop : MonoBehaviour
     private SpriteRenderer workTopItemRenderer;
 
     public Sprite ChoppedSprite;
+    public Sprite UnchoppedSprite;
+
 
     public FoodTypes.item ItemOnWorktop;
 
@@ -32,6 +34,7 @@ public class Worktop : MonoBehaviour
 
         workTopItemRenderer = WorktopItem.GetComponent<SpriteRenderer>();
         workTopItemRenderer.color = new Color(0f, 0f, 0f, 0f);
+        UnchoppedSprite = workTopItemRenderer.sprite;
 
 
     }
@@ -41,8 +44,9 @@ public class Worktop : MonoBehaviour
         // if player presses space when nothing is on the board
         if (inBox && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnWorktop == FoodTypes.item.NONE)
         {
+            
+
             PlaceOnWorktop();
-            PlayerInventory.place();
         }
         // if player presses space when something is on the board and nothing is in the players hand
         else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
@@ -52,7 +56,7 @@ public class Worktop : MonoBehaviour
             PlayerInventory.CurrentItem = ItemOnWorktop;
             ItemOnWorktop = FoodTypes.item.NONE;
             workTopItemRenderer.color = new Color(0, 0, 0f, 0f);
-            PlayerInventory.pickUp();
+            PlayerInventory.UpdateHand();
 
 
         }
@@ -62,16 +66,39 @@ public class Worktop : MonoBehaviour
     {
         if (PlayerInventory.CurrentItem == FoodTypes.item.LETTUCE)
         {
+
             ItemOnWorktop = FoodTypes.item.LETTUCE;
             workTopItemRenderer.color = new Color(0f, 255f, 0f, 1f);
+            workTopItemRenderer.sprite = UnchoppedSprite;
+
 
         }
         else if (PlayerInventory.CurrentItem == FoodTypes.item.TOMATO)
         {
             ItemOnWorktop = FoodTypes.item.TOMATO;
             workTopItemRenderer.color = new Color(255f, 0, 0f, 1f);
+            workTopItemRenderer.sprite = UnchoppedSprite;
+
 
         }
+        else if (PlayerInventory.CurrentItem == FoodTypes.item.CHOPPED_LETTUCE)
+        {
+            ItemOnWorktop = FoodTypes.item.CHOPPED_LETTUCE;
+            workTopItemRenderer.color = new Color(0f, 255f, 0f, 1f);
+            workTopItemRenderer.sprite = ChoppedSprite;
+
+        }
+        else if (PlayerInventory.CurrentItem == FoodTypes.item.CHOPPED_TOMATO)
+        {
+            ItemOnWorktop = FoodTypes.item.CHOPPED_TOMATO;
+            workTopItemRenderer.color = new Color(255f, 0, 0f, 1f);
+            workTopItemRenderer.sprite = ChoppedSprite;
+        }
+        PlayerInventory.UpdateHand();
+        PlayerInventory.place();
+
+        PlayerInventory.CurrentItem = FoodTypes.item.NONE;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

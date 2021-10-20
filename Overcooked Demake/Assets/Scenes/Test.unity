@@ -279,12 +279,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126678648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 826e578f6811beb4883670e592eabe06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerItem: 0
+  hand: {fileID: 0}
+  colourChanged: 0
+  renderer: {fileID: 0}
 --- !u!114 &126678655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdingItem: 0
   CurrentItem: 0
+  ChoppedSprite: {fileID: 7482667652216324306, guid: 6f0d5d893c9a4c04f963ab509bf29a58, type: 3}
+  UnchoppedSprite: {fileID: 0}
 --- !u!1001 &250417200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,6 +355,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6012024839101798895, guid: 7f20c95f8dbf314449e9fad7789db90e, type: 3}
+      propertyPath: ChoppedSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 6f0d5d893c9a4c04f963ab509bf29a58, type: 3}
     - target: {fileID: 6012024839101798898, guid: 7f20c95f8dbf314449e9fad7789db90e, type: 3}
       propertyPath: m_Name
       value: Worktop (1)
@@ -3720,6 +3729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6012024839101798895, guid: 7f20c95f8dbf314449e9fad7789db90e, type: 3}
+      propertyPath: ChoppedSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 6f0d5d893c9a4c04f963ab509bf29a58, type: 3}
     - target: {fileID: 6012024839101798898, guid: 7f20c95f8dbf314449e9fad7789db90e, type: 3}
       propertyPath: m_Name
       value: Worktop
@@ -3784,6 +3797,10 @@ PrefabInstance:
     - target: {fileID: 7180874422757093480, guid: 390d82f65391ec240bfee8f190dc6b3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180874422757093483, guid: 390d82f65391ec240bfee8f190dc6b3e, type: 3}
+      propertyPath: chopTarget
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7180874422757093483, guid: 390d82f65391ec240bfee8f190dc6b3e, type: 3}
       propertyPath: PlayerInventory

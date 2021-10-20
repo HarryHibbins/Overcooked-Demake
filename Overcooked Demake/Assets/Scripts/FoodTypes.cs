@@ -8,6 +8,8 @@ public class FoodTypes : MonoBehaviour
     {
         LETTUCE,
         TOMATO,
+        CHOPPED_LETTUCE,
+        CHOPPED_TOMATO,
         NONE
     }
 }

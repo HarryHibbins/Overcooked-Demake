@@ -44,7 +44,7 @@ public class StorageBox : MonoBehaviour
                 PlayerInventory.CurrentItem = FoodTypes.item.TOMATO;
 
             }
-            PlayerInventory.pickUp();
+            PlayerInventory.UpdateHand();
         }
     }
 
