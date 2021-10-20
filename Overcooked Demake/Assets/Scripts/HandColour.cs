@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandColour : MonoBehaviour
 {
-    public PlayerInventory PlayerInventory;
+    public FoodTypes.item PlayerItem;
     private GameObject hand;
     private bool colourChanged;
 
@@ -30,13 +30,13 @@ public class HandColour : MonoBehaviour
 
     public void ChangeColour()
     {
-        if (PlayerInventory.CurrentItem == PlayerInventory.FoodTypes.LETTUCE )
+        if (PlayerItem == FoodTypes.item.LETTUCE )
         {
             renderer.color = new Color(0f, 255f, 0f, 1f); 
             Debug.Log("Change hand to lettuce colour");
 
         }
-        else if (PlayerInventory.CurrentItem == PlayerInventory.FoodTypes.TOMATO)
+        else if (PlayerItem == FoodTypes.item.TOMATO)
         {
             //Doesnt work because the referance to FOOD on the player is only set to the lettuce storage
             renderer.color = new Color(255f, 0f, 0f, 1f); 

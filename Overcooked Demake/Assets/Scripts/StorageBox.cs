@@ -8,21 +8,16 @@ public class StorageBox : MonoBehaviour
     private GameObject player;
     private bool inBox;
 
-    public enum FoodTypes
-    {
-        LETTUCE,
-        TOMATO,
-        NONE
-    }
 
-    public FoodTypes Item;
+
     public PlayerInventory PlayerInventory;
 
+    public FoodTypes.item Item;
 
     // public FoodTypes currentFoodType;
 
-    
-    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,14 +34,14 @@ public class StorageBox : MonoBehaviour
     {
         if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem)
         {
-            if (Item == FoodTypes.LETTUCE)
+            if (Item == FoodTypes.item.LETTUCE)
             {
-                PlayerInventory.CurrentItem = PlayerInventory.FoodTypes.LETTUCE;
+                PlayerInventory.CurrentItem = FoodTypes.item.LETTUCE;
 
             }
-            else if (Item == FoodTypes.TOMATO)
+            else if (Item == FoodTypes.item.TOMATO)
             {
-                PlayerInventory.CurrentItem = PlayerInventory.FoodTypes.TOMATO;
+                PlayerInventory.CurrentItem = FoodTypes.item.TOMATO;
 
             }
             PlayerInventory.pickUp();

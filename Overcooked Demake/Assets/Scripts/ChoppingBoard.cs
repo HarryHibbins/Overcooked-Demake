@@ -11,14 +11,8 @@ public class ChoppingBoard : MonoBehaviour
     private SpriteRenderer CBItemRenderer;
 
     public Sprite ChoppedSprite;
-    public enum FoodTypes
-    {
-        LETTUCE,
-        TOMATO,
-        NONE
-    }
 
-    public FoodTypes ItemOnBoard;
+    public FoodTypes.item ItemOnBoard;
 
     private bool spacePressed;
     private bool choppingComplete;
@@ -32,7 +26,7 @@ public class ChoppingBoard : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        ItemOnBoard = FoodTypes.NONE;
+        ItemOnBoard = FoodTypes.item.NONE;
 
         foreach (Transform child in transform)
         {
@@ -51,14 +45,14 @@ public class ChoppingBoard : MonoBehaviour
     void Update()
     {
         // if player presses space when nothing is on the board
-        if (inBox && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnBoard == FoodTypes.NONE) 
+        if (inBox && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnBoard == FoodTypes.item.NONE) 
         {
             PlaceOnBoard();
             PlayerInventory.place();
         }
         // if player presses space when something is on the board and nothing is in the players hand
         else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
-                 ItemOnBoard != FoodTypes.NONE)
+                 ItemOnBoard != FoodTypes.item.NONE)
         {
             Chop();
             Debug.Log("Chop");
@@ -67,15 +61,15 @@ public class ChoppingBoard : MonoBehaviour
 
     private void PlaceOnBoard()
     {
-        if (PlayerInventory.CurrentItem == PlayerInventory.FoodTypes.LETTUCE)
+        if (PlayerInventory.CurrentItem == FoodTypes.item.LETTUCE)
         {
-            ItemOnBoard = FoodTypes.LETTUCE;
+            ItemOnBoard = FoodTypes.item.LETTUCE;
             CBItemRenderer.color = new Color(0f, 255f, 0f, 1f); 
 
         }
-        else if (PlayerInventory.CurrentItem == PlayerInventory.FoodTypes.TOMATO)
+        else if (PlayerInventory.CurrentItem == FoodTypes.item.TOMATO)
         {
-            ItemOnBoard = FoodTypes.TOMATO;
+            ItemOnBoard = FoodTypes.item.TOMATO;
             CBItemRenderer.color = new Color(255f, 0, 0f, 1f);
 
         }
