@@ -26,6 +26,15 @@ public class PlayerMovement : MonoBehaviour
         horiztonal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
+        if (horiztonal != 0)
+        {
+            vertical = 0;
+        }
+        if (vertical != 0)
+        {
+            horiztonal = 0;
+        }
+
         rb.velocity = new Vector2(horiztonal, vertical) * speed;
 
 

@@ -8,6 +8,7 @@ TagManager:
   - StorageBox
   - ChoppingBoard
   - CB Item
+  - WT Item
   layers:
   - Default
   - TransparentFX
