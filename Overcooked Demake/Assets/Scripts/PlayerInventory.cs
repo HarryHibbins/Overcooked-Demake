@@ -42,30 +42,38 @@ public class PlayerInventory : MonoBehaviour
 
     public void UpdateHand()
     {
-        if (CurrentItem == FoodTypes.item.LETTUCE || CurrentItem == FoodTypes.item.CHOPPED_LETTUCE)
+        // Switch for Hand Colour
+        switch (CurrentItem)
         {
-            renderer.color = new Color(0f, 255f, 0f, 1f); 
+            case (FoodTypes.item.LETTUCE):
+            case (FoodTypes.item.CHOPPED_LETTUCE):
+                renderer.color = new Color(0f, 255f, 0f, 1f);
+                break;
 
+            case (FoodTypes.item.TOMATO):
+            case (FoodTypes.item.CHOPPED_TOMATO):
+                renderer.color = new Color(255f, 0f, 0f, 1f);
+                break;
+
+            case (FoodTypes.item.NONE):
+                renderer.color = new Color(255f, 255f, 255f);
+                break;
         }
-        else if (CurrentItem == FoodTypes.item.TOMATO || CurrentItem == FoodTypes.item.CHOPPED_TOMATO)
+
+        // Switch for Hand Shape
+        switch (CurrentItem)
         {
-            renderer.color = new Color(255f, 0f, 0f, 1f); 
+            case (FoodTypes.item.LETTUCE):
+            case (FoodTypes.item.TOMATO):
+            case (FoodTypes.item.NONE):
+                renderer.sprite = UnchoppedSprite;
+                break;
+
+            case (FoodTypes.item.CHOPPED_LETTUCE):
+            case (FoodTypes.item.CHOPPED_TOMATO):
+                renderer.sprite = ChoppedSprite;
+                break;
         }
-
-
-        if (CurrentItem == FoodTypes.item.CHOPPED_LETTUCE || CurrentItem == FoodTypes.item.CHOPPED_TOMATO)
-        {
-            renderer.sprite = ChoppedSprite;
-        }
-        if (CurrentItem == FoodTypes.item.LETTUCE || CurrentItem == FoodTypes.item.TOMATO || CurrentItem == FoodTypes.item.NONE)
-        {
-            //Reset to circle/unchopped sprite
-            renderer.sprite = UnchoppedSprite;
-        }
-        Debug.Log("pick up");
-
-
-
         holdingItem = true;
     }
 
@@ -73,15 +81,10 @@ public class PlayerInventory : MonoBehaviour
     {
         if (CurrentItem != FoodTypes.item.NONE)
         {
-        
-            
             renderer.color = new Color(255f, 255f, 255f, 1f);
             renderer.sprite = UnchoppedSprite;
             holdingItem = false;
             Debug.Log("place");
-
-
-          
         }
 
 

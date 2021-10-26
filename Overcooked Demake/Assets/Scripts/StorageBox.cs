@@ -34,16 +34,21 @@ public class StorageBox : MonoBehaviour
     {
         if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem)
         {
-            if (Item == FoodTypes.item.LETTUCE)
+            switch (Item)
             {
-                PlayerInventory.CurrentItem = FoodTypes.item.LETTUCE;
+                case FoodTypes.item.LETTUCE:
+                    PlayerInventory.CurrentItem = FoodTypes.item.LETTUCE;
+                    break;
 
-            }
-            else if (Item == FoodTypes.item.TOMATO)
-            {
-                PlayerInventory.CurrentItem = FoodTypes.item.TOMATO;
+                case FoodTypes.item.TOMATO:
+                    PlayerInventory.CurrentItem = FoodTypes.item.TOMATO;
+                    break;
 
-            }
+                case FoodTypes.item.PLATE:
+                    PlayerInventory.CurrentItem = FoodTypes.item.PLATE;
+                    break;
+
+            }      
             PlayerInventory.UpdateHand();
         }
     }
