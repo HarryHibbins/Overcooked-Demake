@@ -22,8 +22,8 @@ public class Timer : MonoBehaviour
         {
            
             Duration -= Time.deltaTime;
-            TimerText.text = CountdownTime.ToString();
             CountdownTime = Mathf.Round(Duration);
+            TimerText.text = CountdownTime.ToString();
         }
 
     }

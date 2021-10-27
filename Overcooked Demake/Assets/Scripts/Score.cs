@@ -7,6 +7,8 @@ public class Score : MonoBehaviour
 {
     public Text ScoreText;
     public int score;
+
+    public Timer timer;
     void Start()
     {
         
@@ -14,6 +16,24 @@ public class Score : MonoBehaviour
 
     void Update()
     {
+
+        ScoreText.text = ("Score: ") + score.ToString();
+
         
+        
+        //--------Testing-----------
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            UpdateScore();
+        }
+    }
+
+    void UpdateScore()
+    {
+        //if recipe complete
+        score += 20; //Change value depending on recipe completed
+        timer.Duration += 10;//Change value depending on recipe completed
+
+
     }
 }
