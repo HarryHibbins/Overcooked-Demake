@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float horiztonal;
     private float vertical;
     public int moveUnits;
+    private float rayLength = 0.5f;
 
     public GameObject RaycastObject;
     public LayerMask Environemnt;
@@ -29,74 +30,62 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*horiztonal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
 
-        if (horiztonal != 0)
-        {
-            vertical = 0;
-        }
-        if (vertical != 0)
-        {
-            horiztonal = 0;
-        }
+        Debug.DrawRay(RaycastObject.transform.position, RaycastObject.transform.TransformDirection(Vector3.up) * rayLength, Color.red );
 
-        rb.velocity = new Vector2(horiztonal, vertical) * speed;*/
 
-    
-
-        
-     
-
-        Debug.DrawRay(RaycastObject.transform.position, RaycastObject.transform.TransformDirection(Vector3.up) , Color.red);
-        
-      
-        RaycastHit2D hit =  Physics2D.Raycast(RaycastObject.transform.position, RaycastObject.transform.TransformDirection(Vector3.up) ,
-            1, Environemnt);
-
-        if (hit.collider != null)
-        {
-            Debug.Log("Hit" + hit.collider.name);
-            ObjectBlocking = true;
-        }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
+            
+            isObjectBlocking();
+
             if (!ObjectBlocking)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y + moveUnits,
                     transform.position.z);
 
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
             }
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.position = new Vector3(transform.position.x - moveUnits, transform.position.y ,
-                transform.position.z);
-            
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90);
+
+            isObjectBlocking();
+
+            if (!ObjectBlocking)
+            {
+                transform.position = new Vector3(transform.position.x - moveUnits, transform.position.y ,
+                    transform.position.z);
+            }
 
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - moveUnits,
-                transform.position.z);
-            
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180);
+            
+            isObjectBlocking();
 
+            if (!ObjectBlocking)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - moveUnits,
+                    transform.position.z);
+            }
+            
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.position = new Vector3(transform.position.x + moveUnits, transform.position.y ,
-                transform.position.z);
             
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 270);
+            
+            isObjectBlocking();
 
+            if (!ObjectBlocking)
+            {
+                transform.position = new Vector3(transform.position.x + moveUnits, transform.position.y ,
+                    transform.position.z); 
+            }
         }
 
         ObjectBlocking = false;
@@ -104,4 +93,16 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void isObjectBlocking()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(RaycastObject.transform.position,
+            RaycastObject.transform.TransformDirection(Vector3.up),
+            rayLength, Environemnt);
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Hit " + hit.collider.name);
+            ObjectBlocking = true;
+        }
+    }
 }

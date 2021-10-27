@@ -6,9 +6,9 @@ public class ChoppingBoard : MonoBehaviour
 {
     public PlayerInventory PlayerInventory;
     private GameObject player;
-    private bool inBox;
     private GameObject CBItem;
     private SpriteRenderer CBItemRenderer;
+    private bool inBox;
 
     public Sprite ChoppedSprite;
     public Sprite UnchoppedSprite;
@@ -19,6 +19,8 @@ public class ChoppingBoard : MonoBehaviour
     private bool choppingComplete;
     [SerializeField] private int chopCount;
     [SerializeField] private int chopTarget = 10;
+
+    private PlayerInteractables playerInteractables;
     
     
     
@@ -40,6 +42,7 @@ public class ChoppingBoard : MonoBehaviour
         CBItemRenderer = CBItem.GetComponent<SpriteRenderer>();
         UnchoppedSprite = CBItemRenderer.sprite;
         CBItemRenderer.color = new Color(0f, 0f, 0f, 0f);
+        playerInteractables = player.GetComponent<PlayerInteractables>();
 
 
     }
@@ -47,21 +50,21 @@ public class ChoppingBoard : MonoBehaviour
     void Update()
     {
         // if player presses space when nothing is on the board
-        if (inBox && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnBoard == FoodTypes.item.NONE) 
+        if (inBox && playerInteractables.canUseCB && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnBoard == FoodTypes.item.NONE) 
         {
             PlaceOnBoard();
             PlayerInventory.place();
         }
         // if player presses space when something is on the board and nothing is in the players hand
-        else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
+        else if (inBox && playerInteractables.canUseCB && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
                  (ItemOnBoard == FoodTypes.item.LETTUCE || ItemOnBoard == FoodTypes.item.TOMATO))
         {
             Chop();
             Debug.Log("Chop");
         }
         //Picking up chopped item off the board
-        else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
-         (ItemOnBoard == FoodTypes.item.CHOPPED_LETTUCE || ItemOnBoard == FoodTypes.item.CHOPPED_TOMATO))
+        else if (inBox && playerInteractables.canUseCB && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
+                 (ItemOnBoard == FoodTypes.item.CHOPPED_LETTUCE || ItemOnBoard == FoodTypes.item.CHOPPED_TOMATO))
         {
             PlayerInventory.CurrentItem = ItemOnBoard;
             PlayerInventory.UpdateHand();
@@ -150,6 +153,7 @@ public class ChoppingBoard : MonoBehaviour
     
 
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.transform == player.transform)
@@ -157,7 +161,7 @@ public class ChoppingBoard : MonoBehaviour
             inBox = true;
         }
     }
-    
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.transform == player.transform)
@@ -165,4 +169,5 @@ public class ChoppingBoard : MonoBehaviour
             inBox = false;
         }
     }
+    
 }

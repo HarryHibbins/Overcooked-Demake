@@ -7,6 +7,7 @@ public class Worktop : MonoBehaviour
     public PlayerInventory PlayerInventory;
     private GameObject player;
     private bool inBox;
+ 
     private GameObject WorktopItem;
     private SpriteRenderer workTopItemRenderer;
 
@@ -15,6 +16,9 @@ public class Worktop : MonoBehaviour
 
 
     public FoodTypes.item ItemOnWorktop;
+    
+    private PlayerInteractables playerInteractables;
+
 
 
 
@@ -35,6 +39,8 @@ public class Worktop : MonoBehaviour
         workTopItemRenderer = WorktopItem.GetComponent<SpriteRenderer>();
         workTopItemRenderer.color = new Color(0f, 0f, 0f, 0f);
         UnchoppedSprite = workTopItemRenderer.sprite;
+        playerInteractables = player.GetComponent<PlayerInteractables>();
+
 
 
     }
@@ -42,14 +48,13 @@ public class Worktop : MonoBehaviour
     void Update()
     {
         // if player presses space when nothing is on the board
-        if (inBox && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnWorktop == FoodTypes.item.NONE)
+        if (inBox &&playerInteractables.canUseWT && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnWorktop == FoodTypes.item.NONE)
         {
-            
 
             PlaceOnWorktop();
         }
         // if player presses space when something is on the board and nothing is in the players hand
-        else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
+        else if (inBox && playerInteractables.canUseWT && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
                  ItemOnWorktop != FoodTypes.item.NONE)
         {
 
