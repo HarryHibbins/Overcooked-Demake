@@ -59,6 +59,7 @@ public class ChoppingBoard : MonoBehaviour
             Chop();
             Debug.Log("Chop");
         }
+        //Picking up chopped item off the board
         else if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
          (ItemOnBoard == FoodTypes.item.CHOPPED_LETTUCE || ItemOnBoard == FoodTypes.item.CHOPPED_TOMATO))
         {
@@ -86,15 +87,33 @@ public class ChoppingBoard : MonoBehaviour
         if (PlayerInventory.CurrentItem == FoodTypes.item.LETTUCE)
         {
             ItemOnBoard = FoodTypes.item.LETTUCE;
+            CBItemRenderer.sprite = UnchoppedSprite;
             CBItemRenderer.color = new Color(0f, 255f, 0f, 1f); 
 
         }
         else if (PlayerInventory.CurrentItem == FoodTypes.item.TOMATO)
         {
             ItemOnBoard = FoodTypes.item.TOMATO;
+            CBItemRenderer.sprite = UnchoppedSprite;
             CBItemRenderer.color = new Color(255f, 0, 0f, 1f);
 
         }
+        else if (PlayerInventory.CurrentItem == FoodTypes.item.CHOPPED_LETTUCE)
+        {
+            ItemOnBoard = FoodTypes.item.CHOPPED_LETTUCE;
+            CBItemRenderer.sprite = ChoppedSprite;
+            CBItemRenderer.color = new Color(0f, 255f, 0f, 1f); 
+
+        }
+        else if (PlayerInventory.CurrentItem == FoodTypes.item.CHOPPED_TOMATO)
+        {
+            ItemOnBoard = FoodTypes.item.CHOPPED_TOMATO;
+            CBItemRenderer.sprite = ChoppedSprite;
+            CBItemRenderer.color = new Color(255f, 0, 0f, 1f);
+
+        }
+        
+        
     }
 
     private void Chop()
