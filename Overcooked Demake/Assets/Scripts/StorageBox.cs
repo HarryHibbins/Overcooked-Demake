@@ -8,8 +8,6 @@ public class StorageBox : MonoBehaviour
     private GameObject player;
     private bool inBox;
 
-
-
     public PlayerInventory PlayerInventory;
 
     public FoodTypes.item Item;
@@ -23,10 +21,6 @@ public class StorageBox : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //FoodTypes currentFoodType = FoodTypes.NONE;
-
-
-
     }
 
     // Update is called once per frame
@@ -48,7 +42,7 @@ public class StorageBox : MonoBehaviour
                     PlayerInventory.CurrentItem = FoodTypes.item.PLATE;
                     break;
 
-            }      
+            }
             PlayerInventory.UpdateHand();
         }
     }

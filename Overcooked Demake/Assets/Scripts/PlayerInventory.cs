@@ -14,15 +14,17 @@ public class PlayerInventory : MonoBehaviour
     private GameObject hand;
     private bool colourChanged;
 
-    
 
     private SpriteRenderer renderer;
     public Sprite ChoppedSprite;
     public Sprite UnchoppedSprite;
 
-
-
-
+    public GameObject handPlaceholder;
+    public GameObject lettuceSprite;
+    public GameObject choppedLettuceSprite;
+    public GameObject tomatoSprite;
+    public GameObject choppedTomatoSprite;
+    public GameObject plateSprite;
 
 
     // Start is called before the first frame update
@@ -30,9 +32,6 @@ public class PlayerInventory : MonoBehaviour
     {
         CurrentItem = FoodTypes.item.NONE;
         holdingItem = false;
-        hand = GameObject.FindGameObjectWithTag("Hand");
-        renderer = hand.GetComponent<SpriteRenderer>();
-        UnchoppedSprite = renderer.sprite;
     }
 
     // Update is called once per frame
@@ -42,53 +41,60 @@ public class PlayerInventory : MonoBehaviour
 
     public void UpdateHand()
     {
-        // Switch for Hand Colour
         switch (CurrentItem)
         {
             case (FoodTypes.item.LETTUCE):
-            case (FoodTypes.item.CHOPPED_LETTUCE):
-                renderer.color = new Color(0f, 255f, 0f, 1f);
-                break;
-
-            case (FoodTypes.item.TOMATO):
-            case (FoodTypes.item.CHOPPED_TOMATO):
-                renderer.color = new Color(255f, 0f, 0f, 1f);
-                break;
-
-            case (FoodTypes.item.NONE):
-                renderer.color = new Color(255f, 255f, 255f);
-                break;
-        }
-
-        // Switch for Hand Shape
-        switch (CurrentItem)
-        {
-            case (FoodTypes.item.LETTUCE):
-            case (FoodTypes.item.TOMATO):
-            case (FoodTypes.item.NONE):
-                renderer.sprite = UnchoppedSprite;
+                GameObject spriteLettuce = Instantiate(lettuceSprite, handPlaceholder.transform.position, Quaternion.identity);
+                spriteLettuce.transform.parent = handPlaceholder.transform;
+                holdingItem = true;
                 break;
 
             case (FoodTypes.item.CHOPPED_LETTUCE):
+                GameObject spriteChoppedLettuce = Instantiate(choppedLettuceSprite, handPlaceholder.transform.position, Quaternion.identity);
+                spriteChoppedLettuce.transform.parent = handPlaceholder.transform;
+                holdingItem = true;
+                break;
+
+            case (FoodTypes.item.TOMATO):
+                GameObject spriteTomato = Instantiate(tomatoSprite, handPlaceholder.transform.position, Quaternion.identity);
+                spriteTomato.transform.parent = handPlaceholder.transform;
+                holdingItem = true;
+                break;
+
             case (FoodTypes.item.CHOPPED_TOMATO):
-                renderer.sprite = ChoppedSprite;
+                GameObject spriteChoppedTomato = Instantiate(choppedTomatoSprite, handPlaceholder.transform.position, Quaternion.identity);
+                spriteChoppedTomato.transform.parent = handPlaceholder.transform;
+                holdingItem = true;
+                break;
+
+            case (FoodTypes.item.PLATE):
+                GameObject spritePlate = Instantiate(plateSprite, handPlaceholder.transform.position, Quaternion.identity);
+                spritePlate.transform.parent = handPlaceholder.transform;
+                holdingItem = true;
+                break;
+
+            case (FoodTypes.item.NONE):
+                ClearHand();
                 break;
         }
-        holdingItem = true;
+        
     }
 
     public void place()
     {
         if (CurrentItem != FoodTypes.item.NONE)
         {
-            renderer.color = new Color(255f, 255f, 255f, 1f);
-            renderer.sprite = UnchoppedSprite;
             holdingItem = false;
-            Debug.Log("place");
+            ClearHand();
         }
-
-
     }
 
-
+    public void ClearHand()
+    {
+        foreach (Transform child in handPlaceholder.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        holdingItem = false;
+    }
 }

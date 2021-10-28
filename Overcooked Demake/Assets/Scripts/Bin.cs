@@ -23,8 +23,7 @@ public class Bin : MonoBehaviour
         // If player is holding item, then remove it and update the player's hand.
         if (inBox && playerInteractables.canUseBin && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem)
         {
-            PlayerInventory.CurrentItem = FoodTypes.item.NONE;
-            PlayerInventory.UpdateHand();
+            PlayerInventory.ClearHand();
             PlayerInventory.holdingItem = false;
         }
     }
