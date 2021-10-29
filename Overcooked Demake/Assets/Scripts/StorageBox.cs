@@ -21,6 +21,7 @@ public class StorageBox : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        PlayerInventory = player.GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -40,6 +41,10 @@ public class StorageBox : MonoBehaviour
 
                 case FoodTypes.item.PLATE:
                     PlayerInventory.CurrentItem = FoodTypes.item.PLATE;
+                    break;
+
+                case FoodTypes.item.BURGER:
+                    PlayerInventory.CurrentItem = FoodTypes.item.BURGER;
                     break;
 
             }

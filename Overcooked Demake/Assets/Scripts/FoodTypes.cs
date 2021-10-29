@@ -10,6 +10,8 @@ public class FoodTypes : MonoBehaviour
         TOMATO,
         CHOPPED_LETTUCE,
         CHOPPED_TOMATO,
+        BURGER,
+        COOKED_BURGER,
         PLATE,
         NONE
     }

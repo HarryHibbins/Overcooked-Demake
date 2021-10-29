@@ -29,6 +29,7 @@ public class ChoppingBoard : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        PlayerInventory = player.GetComponent<PlayerInventory>();
         ItemOnBoard = FoodTypes.item.NONE;
 
         foreach (Transform child in transform)

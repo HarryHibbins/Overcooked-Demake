@@ -25,7 +25,8 @@ public class PlayerInventory : MonoBehaviour
     public GameObject tomatoSprite;
     public GameObject choppedTomatoSprite;
     public GameObject plateSprite;
-
+    public GameObject burgerSprite;
+    public GameObject cookedBurgerSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +71,18 @@ public class PlayerInventory : MonoBehaviour
             case (FoodTypes.item.PLATE):
                 GameObject spritePlate = Instantiate(plateSprite, handPlaceholder.transform.position, Quaternion.identity);
                 spritePlate.transform.parent = handPlaceholder.transform;
+                holdingItem = true;
+                break;
+
+            case (FoodTypes.item.BURGER):
+                GameObject spriteBurger = Instantiate(burgerSprite, handPlaceholder.transform.position, Quaternion.identity);
+                spriteBurger.transform.parent = handPlaceholder.transform;
+                holdingItem = true;
+                break;
+
+            case (FoodTypes.item.COOKED_BURGER):
+                GameObject spriteCookedBurger = Instantiate(cookedBurgerSprite, handPlaceholder.transform.position, Quaternion.identity);
+                spriteCookedBurger.transform.parent = handPlaceholder.transform;
                 holdingItem = true;
                 break;
 

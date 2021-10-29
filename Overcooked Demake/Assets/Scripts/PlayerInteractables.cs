@@ -12,7 +12,7 @@ public class PlayerInteractables : MonoBehaviour
     public bool canUseCB;
     public bool canUseWT;
     public bool canUseBin;
-
+    public bool canUseGrill;
 
 
     void Update()
@@ -37,6 +37,10 @@ public class PlayerInteractables : MonoBehaviour
             {
                 canUseBin = true;
             }
+            else if (hit.collider.tag == "Grill")
+            {
+                canUseGrill = true;
+            }
 
         }
         else
@@ -44,6 +48,7 @@ public class PlayerInteractables : MonoBehaviour
             canUseCB = false;
             canUseWT = false;
             canUseBin = false;
+            canUseGrill = false;
         }
 
 

@@ -11,6 +11,8 @@ TagManager:
   - WT Item
   - Worktop
   - Bin
+  - GR Item
+  - Grill
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,6 @@ public class Worktop : MonoBehaviour
     public Sprite ChoppedSprite;
     public Sprite UnchoppedSprite;
 
-
     public FoodTypes.item ItemOnWorktop;
     
     private PlayerInteractables playerInteractables;
@@ -98,6 +97,14 @@ public class Worktop : MonoBehaviour
 
             case (FoodTypes.item.CHOPPED_TOMATO):
                 ItemOnWorktop = FoodTypes.item.CHOPPED_TOMATO;
+                break;
+
+            case (FoodTypes.item.BURGER):
+                ItemOnWorktop = FoodTypes.item.BURGER;
+                break;
+
+            case (FoodTypes.item.COOKED_BURGER):
+                ItemOnWorktop = FoodTypes.item.COOKED_BURGER;
                 break;
 
             case (FoodTypes.item.PLATE):
