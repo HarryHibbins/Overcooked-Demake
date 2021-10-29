@@ -21,11 +21,7 @@ public class ChoppingBoard : MonoBehaviour
     [SerializeField] private int chopTarget = 10;
 
     private PlayerInteractables playerInteractables;
-    
-    
-    
-    
-    
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -44,14 +40,13 @@ public class ChoppingBoard : MonoBehaviour
         UnchoppedSprite = CBItemRenderer.sprite;
         CBItemRenderer.color = new Color(0f, 0f, 0f, 0f);
         playerInteractables = player.GetComponent<PlayerInteractables>();
-
-
     }
 
     void Update()
     {
         // if player presses space when nothing is on the board
-        if (inBox && playerInteractables.canUseCB && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnBoard == FoodTypes.item.NONE) 
+        if (inBox && playerInteractables.canUseCB && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnBoard == FoodTypes.item.NONE &&
+            FoodTypes.IsCompatible(FoodTypes.station.CHOPPING_BOARD, PlayerInventory.CurrentItem)) 
         {
             PlaceOnBoard();
             PlayerInventory.place();

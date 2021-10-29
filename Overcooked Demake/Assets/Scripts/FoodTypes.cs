@@ -15,4 +15,40 @@ public class FoodTypes : MonoBehaviour
         PLATE,
         NONE
     }
+
+    public enum station
+    {
+        GRILL,
+        CHOPPING_BOARD
+    }
+
+    public static bool IsCompatible(station station, item item)
+    {
+        if (station == station.GRILL)
+        {
+            switch (item)
+            {
+                case (item.BURGER):
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        else if (station == station.CHOPPING_BOARD)
+        {
+            switch (item)
+            {
+                case (item.LETTUCE):
+                case (item.TOMATO):
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

@@ -17,7 +17,7 @@ public class Grill : MonoBehaviour
     private SpriteRenderer GRItemRenderer;
     public Sprite CookedSprite;
     public Sprite UncookedSprite;
-
+    
     public Slider slider;
 
     void Start()
@@ -34,7 +34,6 @@ public class Grill : MonoBehaviour
                 GRItem = child.gameObject;
             }
         }
-
         GRItemRenderer = GRItem.GetComponent<SpriteRenderer>();
         UncookedSprite = GRItemRenderer.sprite;
         GRItemRenderer.color = new Color(0f, 0f, 0f, 0f);
@@ -51,7 +50,7 @@ public class Grill : MonoBehaviour
             StartCoroutine(GrillItem(5.0f, FoodTypes.item.BURGER));
         }
         else if (inBox && playerInteractables.canUseGrill && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
-                 ItemOnGrill == FoodTypes.item.COOKED_BURGER)
+                 FoodTypes.IsCompatible(FoodTypes.station.GRILL, PlayerInventory.CurrentItem))
         {
             PlayerInventory.CurrentItem = ItemOnGrill;
             PlayerInventory.UpdateHand();

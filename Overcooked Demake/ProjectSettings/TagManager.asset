@@ -13,6 +13,7 @@ TagManager:
   - Bin
   - GR Item
   - Grill
+  - GameManager
   layers:
   - Default
   - TransparentFX
