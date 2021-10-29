@@ -42,8 +42,12 @@ public class Worktop : MonoBehaviour
 
     void Update()
     {
+        if (inBox && playerInteractables.canUseWT && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnWorktop == FoodTypes.item.PLATE && PlayerInventory.CurrentItem != FoodTypes.item.PLATE)
+        {
+            AddToPlate();
+        }
         // if player presses space when nothing is on the board
-        if (inBox &&playerInteractables.canUseWT && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnWorktop == FoodTypes.item.NONE)
+        else if (inBox &&playerInteractables.canUseWT && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && ItemOnWorktop == FoodTypes.item.NONE)
         {
             PlaceOnWorktop();
         }
@@ -51,11 +55,24 @@ public class Worktop : MonoBehaviour
         else if (inBox && playerInteractables.canUseWT && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
                  ItemOnWorktop != FoodTypes.item.NONE)
         {
-            Debug.Log("test");
-            PlayerInventory.CurrentItem = ItemOnWorktop;
-            PlayerInventory.holdingItem = true;
-            PlayerInventory.UpdateHand();
-            clearWorktop();
+            if (ItemOnWorktop == FoodTypes.item.PLATE)
+            {
+                GameObject plate = itemPlaceholder.transform.GetChild(0).gameObject;
+
+                plate.transform.SetParent(PlayerInventory.handPlaceholder.transform);
+                plate.transform.localPosition = new Vector3(0, 0, -2);
+                PlayerInventory.CurrentItem = ItemOnWorktop;
+                PlayerInventory.holdingItem = true;
+                clearWorktop();
+            }
+            else
+            {
+                Debug.Log("test");
+                PlayerInventory.CurrentItem = ItemOnWorktop;
+                PlayerInventory.holdingItem = true;
+                PlayerInventory.UpdateHand();
+                clearWorktop();
+            }
         }
     }
     
@@ -100,6 +117,18 @@ public class Worktop : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
         ItemOnWorktop = FoodTypes.item.NONE;
+    }
+
+    private void AddToPlate()
+    {
+        GameObject itemToAdd = PlayerInventory.handPlaceholder.transform.GetChild(0).gameObject;
+        GameObject plate = itemPlaceholder.transform.GetChild(0).gameObject;
+
+        itemToAdd.transform.SetParent(plate.gameObject.transform);
+        itemToAdd.transform.localPosition = new Vector3(0, 0, -2);
+
+        PlayerInventory.CurrentItem = FoodTypes.item.NONE;
+        PlayerInventory.UpdateHand();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
