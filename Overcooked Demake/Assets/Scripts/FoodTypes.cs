@@ -16,6 +16,14 @@ public class FoodTypes : MonoBehaviour
         NONE
     }
 
+    public enum recipe_item
+    {
+        CHOPPED_LETTUCE,
+        CHOPPED_TOMATO,
+        COOKED_BURGER,
+        PLATE,
+    }
+
     public enum station
     {
         GRILL,

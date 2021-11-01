@@ -28,7 +28,7 @@ public class Score : MonoBehaviour
         }
     }
 
-    void UpdateScore()
+    public void UpdateScore()
     {
         //if recipe complete
         score += 20; //Change value depending on recipe completed
