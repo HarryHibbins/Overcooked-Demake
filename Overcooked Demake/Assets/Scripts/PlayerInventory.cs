@@ -53,6 +53,7 @@ public class PlayerInventory : MonoBehaviour
             case (FoodTypes.item.CHOPPED_LETTUCE):
                 GameObject spriteChoppedLettuce = Instantiate(choppedLettuceSprite, handPlaceholder.transform.position, Quaternion.identity);
                 spriteChoppedLettuce.transform.parent = handPlaceholder.transform;
+                spriteChoppedLettuce.tag = "CHOPPED_LETTUCE";
                 holdingItem = true;
                 break;
 
@@ -65,6 +66,7 @@ public class PlayerInventory : MonoBehaviour
             case (FoodTypes.item.CHOPPED_TOMATO):
                 GameObject spriteChoppedTomato = Instantiate(choppedTomatoSprite, handPlaceholder.transform.position, Quaternion.identity);
                 spriteChoppedTomato.transform.parent = handPlaceholder.transform;
+                spriteChoppedTomato.tag = "CHOPPED_TOMATO";
                 holdingItem = true;
                 break;
 
@@ -83,6 +85,7 @@ public class PlayerInventory : MonoBehaviour
             case (FoodTypes.item.COOKED_BURGER):
                 GameObject spriteCookedBurger = Instantiate(cookedBurgerSprite, handPlaceholder.transform.position, Quaternion.identity);
                 spriteCookedBurger.transform.parent = handPlaceholder.transform;
+                spriteCookedBurger.tag = "COOKED_BURGER";
                 holdingItem = true;
                 break;
 
