@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 708613562}
   - component: {fileID: 708613563}
   - component: {fileID: 708613564}
+  - component: {fileID: 708613565}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -913,6 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 60
+  elapsed_time: 0
   TimerText: {fileID: 1608543797}
 --- !u!114 &708613564
 MonoBehaviour:
@@ -929,6 +931,21 @@ MonoBehaviour:
   ScoreText: {fileID: 928891442}
   score: 0
   timer: {fileID: 708613563}
+--- !u!114 &708613565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708613561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47158df5c17f58f4992cdf663e0af2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 
+  recipe_matched: 0
+  game_manager: {fileID: 0}
 --- !u!1 &928891440
 GameObject:
   m_ObjectHideFlags: 0
