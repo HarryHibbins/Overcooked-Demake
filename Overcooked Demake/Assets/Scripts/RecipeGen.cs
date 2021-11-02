@@ -17,9 +17,15 @@ public class RecipeGen : MonoBehaviour
 	public GameObject sprite_holder;
 	public GameObject sprite_holder_2;
 	public GameObject sprite_holder_3;
+    private bool showRecipeOne = false;
+    private bool showRecipeTwo = false;
+    private bool showRecipeThree = false;
+
 	public Sprite LettuceSprite;
 	public Sprite TomatoSprite;
 	public Sprite BurgerSprite;
+    //refers to number of ingredients in recipe
+    int complexity = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,36 +36,69 @@ public class RecipeGen : MonoBehaviour
 		sprite_holder = GameObject.FindGameObjectWithTag("RecipeDisplay");
 		sprite_holder_2 = GameObject.FindGameObjectWithTag("RecipeDisplay2");
 		sprite_holder_3 = GameObject.FindGameObjectWithTag("RecipeDisplay3");
-        GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder);
-        GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_2);
-        GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_3);
     }
 
     // Update is called once per frame
     void Update()
 
     {
+        InitialiseRecipies();
+
         //check if the recipe matched bool has become true, if so reset to false and generate a new recipe and call updatescore
         if (recipe1_matched) 
         {
             recipe1_matched = false;
             GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder);
-            game_manager.GetComponent<Score>().UpdateScore(50,30);
+            AssignScore();
         }
         if (recipe2_matched)
         {
             recipe2_matched = false;
             GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_2);
-            game_manager.GetComponent<Score>().UpdateScore(50,30);
+            AssignScore();
         }
         if (recipe3_matched)
         {
             recipe3_matched = false;
             GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_3);
-            game_manager.GetComponent<Score>().UpdateScore(50,30);
+            AssignScore();
         }
     }
 
+    void InitialiseRecipies()
+    {
+        if (game_manager.GetComponent<Timer>().elapsed_time > 0 && !showRecipeOne)
+        {
+            GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder);
+            showRecipeOne = true;
+        }
+        if (game_manager.GetComponent<Timer>().elapsed_time > 30 && !showRecipeTwo)
+        {
+            GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_2);
+            showRecipeTwo = true;
+        }
+        if (game_manager.GetComponent<Timer>().elapsed_time > 60 && !showRecipeThree)
+        {
+            GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_3);
+            showRecipeThree = true;
+        }
+    }
+
+    void AssignScore()
+    {
+        if (complexity == 3)
+        {
+            game_manager.GetComponent<Score>().UpdateScore(50, 30);
+        }
+        else if (complexity == 4)
+        {
+            game_manager.GetComponent<Score>().UpdateScore(100, 30);
+        }
+        else if (complexity == 5)
+        {
+            game_manager.GetComponent<Score>().UpdateScore(200, 45);
+        }
+    }
 
     void GenerateRecipe(float time, GameObject recipe_number) 
     {
@@ -79,8 +118,6 @@ public class RecipeGen : MonoBehaviour
             recipe_3.Add(FoodTypes.recipe_item.PLATE);
         }
 
-        //refers to number of ingredients in recipe
-        int complexity = 0;
         //more items as time goes on
         if (time < 30)
         {
@@ -112,7 +149,6 @@ public class RecipeGen : MonoBehaviour
                         recipe.Add(FoodTypes.recipe_item.COOKED_BURGER);
                         break;
                 }
-
             }
 
             // FOR DISPLAYING ON SCREEN
