@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = new Vector3(transform.position.x - moveUnits, transform.position.y ,
                     transform.position.z);
             }
-
+            
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
