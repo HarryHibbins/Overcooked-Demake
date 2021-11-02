@@ -47,6 +47,7 @@ public class Grill : MonoBehaviour
         {
             PlaceOnGrill();
             PlayerInventory.place();
+            FindObjectOfType<AudioManager>().Play("PlaceOnGrill");
             StartCoroutine(GrillItem(5.0f, FoodTypes.item.BURGER));
         }
         else if (inBox && playerInteractables.canUseGrill && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
@@ -54,7 +55,7 @@ public class Grill : MonoBehaviour
         {
             PlayerInventory.CurrentItem = ItemOnGrill;
             PlayerInventory.UpdateHand();
-            FindObjectOfType<AudioManager>().Play("PickUp");
+            FindObjectOfType<AudioManager>().Play("PlaceOnGrill");
             ClearGrill();
 
         }
@@ -67,7 +68,7 @@ public class Grill : MonoBehaviour
             ItemOnGrill = FoodTypes.item.BURGER;
             GRItemRenderer.sprite = UncookedSprite;
             GRItemRenderer.color = new Color32(250, 159, 205, 255);
-            FindObjectOfType<AudioManager>().Play("PlaceOnGrill");
+            
         }
        
     }
@@ -99,6 +100,7 @@ public class Grill : MonoBehaviour
     void ClearGrill()
     {
         ItemOnGrill = FoodTypes.item.NONE;
+        
         GRItemRenderer.sprite = UncookedSprite;
         GRItemRenderer.color = new Color(0f, 0f, 0f, 0f);
     }
