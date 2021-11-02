@@ -14,6 +14,7 @@ public class PlayerInteractables : MonoBehaviour
     public bool canUseBin;
     public bool canUseGrill;
     public bool canUseSS;
+    public bool canUseStorage;
 
 
     void Update()
@@ -46,6 +47,10 @@ public class PlayerInteractables : MonoBehaviour
             {
                 canUseSS = true;
             }
+            else if (hit.collider.tag == "StorageBox")
+            {
+                canUseStorage = true;
+            }
 
         }
         else
@@ -55,6 +60,7 @@ public class PlayerInteractables : MonoBehaviour
             canUseBin = false;
             canUseGrill = false;
             canUseSS = false;
+            canUseStorage = false;
         }
 
 

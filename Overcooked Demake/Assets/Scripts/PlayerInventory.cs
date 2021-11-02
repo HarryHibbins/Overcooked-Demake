@@ -112,5 +112,6 @@ public class PlayerInventory : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
         holdingItem = false;
+        
     }
 }

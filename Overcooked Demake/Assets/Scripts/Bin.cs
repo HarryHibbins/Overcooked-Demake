@@ -25,6 +25,8 @@ public class Bin : MonoBehaviour
         {
             PlayerInventory.ClearHand();
             PlayerInventory.holdingItem = false;
+            PlayerInventory.CurrentItem = FoodTypes.item.NONE;
+
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
