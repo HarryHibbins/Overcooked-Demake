@@ -56,8 +56,10 @@ public class StorageBox : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.transform == player.transform)
         {
+            Debug.Log("WAGWAN MY DRILLA");
             inBox = true;
         }
     }
