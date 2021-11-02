@@ -17,6 +17,8 @@ TagManager:
   - CHOPPED_LETTUCE
   - CHOPPED_TOMATO
   - COOKED_BURGER
+  - RecipeDisplay
+  - ServingStation
   layers:
   - Default
   - TransparentFX

@@ -43,14 +43,14 @@ public class Grill : MonoBehaviour
     void Update()
     {
         if (inBox && playerInteractables.canUseGrill && Input.GetButtonDown("Interact") && PlayerInventory.holdingItem && 
-            ItemOnGrill == FoodTypes.item.NONE && PlayerInventory.CurrentItem == FoodTypes.item.BURGER)
+            ItemOnGrill == FoodTypes.item.NONE && FoodTypes.IsCompatible(FoodTypes.station.GRILL, PlayerInventory.CurrentItem))
         {
             PlaceOnGrill();
             PlayerInventory.place();
             StartCoroutine(GrillItem(5.0f, FoodTypes.item.BURGER));
         }
         else if (inBox && playerInteractables.canUseGrill && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
-                 FoodTypes.IsCompatible(FoodTypes.station.GRILL, PlayerInventory.CurrentItem))
+                 ItemOnGrill == FoodTypes.item.COOKED_BURGER)
         {
             PlayerInventory.CurrentItem = ItemOnGrill;
             PlayerInventory.UpdateHand();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Specialized;
 
 public class RecipeGen : MonoBehaviour
 {
@@ -9,12 +10,18 @@ public class RecipeGen : MonoBehaviour
     public bool recipe_matched;
     public GameObject game_manager;
     public GameObject player_hand;
+	public GameObject sprite_holder;
+	public Sprite LettuceSprite;
+	public Sprite TomatoSprite;
+	public Sprite BurgerSprite;
+
     // Start is called before the first frame update
     void Awake()
     {
         //automatically fetches required objects so they dont have to be manually assigned, and then generates the first recipe, changed start to awake in the event we add a menu
         game_manager = GameObject.FindGameObjectWithTag("GameManager");
         player_hand = GameObject.FindGameObjectWithTag("Hand");
+		sprite_holder = GameObject.FindGameObjectWithTag("RecipeDisplay");
         GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time);                
     }
 
@@ -72,6 +79,57 @@ public class RecipeGen : MonoBehaviour
             }
             
         }
+
+		// FOR DISPLAYING ON SCREEN
+		for (int i = 0; i < 3; i++) 
+		{
+			switch (recipe [i + 1])
+			{
+			case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+				sprite_holder.transform.GetChild (i).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+				break;
+			case FoodTypes.recipe_item.CHOPPED_TOMATO:
+				sprite_holder.transform.GetChild (i).gameObject.GetComponent<SpriteRenderer> ().sprite = TomatoSprite;
+				//sprite_holder.transform.GetChild (i).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+				break;
+			case FoodTypes.recipe_item.COOKED_BURGER:
+				sprite_holder.transform.GetChild (i).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+				break;
+			}
+		}
+		if (complexity > 3) 
+		{
+			switch (recipe [4])
+			{
+			case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+				sprite_holder.transform.GetChild (3).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+				break;
+			case FoodTypes.recipe_item.CHOPPED_TOMATO:
+				sprite_holder.transform.GetChild (3).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+				//sprite_holder.transform.GetChild (3).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+				break;
+			case FoodTypes.recipe_item.COOKED_BURGER:
+				sprite_holder.transform.GetChild (3).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+				break;
+			}
+		}
+		if (complexity > 4) 
+		{
+			switch (recipe [5])
+			{
+			case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+				sprite_holder.transform.GetChild (4).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+				break;
+			case FoodTypes.recipe_item.CHOPPED_TOMATO:
+				sprite_holder.transform.GetChild (4).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+				//sprite_holder.transform.GetChild (4).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+				break;
+			case FoodTypes.recipe_item.COOKED_BURGER:
+				sprite_holder.transform.GetChild (4).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+				break;
+			}
+		}
+
     }
 
     public bool CheckRecipe(List<FoodTypes.recipe_item> checklist) 
@@ -117,6 +175,7 @@ public class RecipeGen : MonoBehaviour
             return false;
         }
         // if its reached this point, the checklist recipe should have matched the ingredients on the plate, so checkrecipe is true!
+        Debug.Log("Recipe correct");
 
         return true;
     }

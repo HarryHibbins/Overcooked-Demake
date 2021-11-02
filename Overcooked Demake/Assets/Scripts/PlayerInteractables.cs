@@ -13,6 +13,7 @@ public class PlayerInteractables : MonoBehaviour
     public bool canUseWT;
     public bool canUseBin;
     public bool canUseGrill;
+    public bool canUseSS;
 
 
     void Update()
@@ -41,6 +42,10 @@ public class PlayerInteractables : MonoBehaviour
             {
                 canUseGrill = true;
             }
+            else if (hit.collider.tag == "ServingStation")
+            {
+                canUseSS = true;
+            }
 
         }
         else
@@ -49,6 +54,7 @@ public class PlayerInteractables : MonoBehaviour
             canUseWT = false;
             canUseBin = false;
             canUseGrill = false;
+            canUseSS = false;
         }
 
 
