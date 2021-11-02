@@ -19,6 +19,8 @@ TagManager:
   - COOKED_BURGER
   - RecipeDisplay
   - ServingStation
+  - RecipeDisplay2
+  - RecipeDisplay3
   layers:
   - Default
   - TransparentFX
