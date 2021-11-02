@@ -7,7 +7,7 @@ public class StorageBox : MonoBehaviour
 {
     private GameObject player;
     private bool inBox;
-
+    private PlayerInteractables playerInteractables;
     public PlayerInventory PlayerInventory;
 
     public FoodTypes.item Item;
@@ -22,13 +22,15 @@ public class StorageBox : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         PlayerInventory = player.GetComponent<PlayerInventory>();
+        playerInteractables = player.GetComponent<PlayerInteractables>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (inBox && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem)
+        if (inBox && playerInteractables.canUseStorage && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem)
         {
+            Debug.Log("PICKUP");
             switch (Item)
             {
                 case FoodTypes.item.LETTUCE:

@@ -32,7 +32,18 @@ public class SubmitOrder : MonoBehaviour
 
             if (generatedRecipe.CheckRecipe(generatedRecipe.recipe))
             {
-                generatedRecipe.recipe_matched = true;
+                generatedRecipe.recipe1_matched = true;
+                Debug.Log("Recipe 1 complete");
+            }
+            else if (generatedRecipe.CheckRecipe(generatedRecipe.recipe_2))
+            {
+                generatedRecipe.recipe2_matched = true;
+                Debug.Log("Recipe 2 complete");
+            }
+            else if (generatedRecipe.CheckRecipe(generatedRecipe.recipe_3))
+            {
+                generatedRecipe.recipe3_matched = true;
+                Debug.Log("Recipe 3 complete");
             }
         }
     }
