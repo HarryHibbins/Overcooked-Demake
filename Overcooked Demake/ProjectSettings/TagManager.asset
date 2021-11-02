@@ -18,6 +18,7 @@ TagManager:
   - CHOPPED_TOMATO
   - COOKED_BURGER
   - RecipeDisplay
+  - ServingStation
   layers:
   - Default
   - TransparentFX
