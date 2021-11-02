@@ -899,7 +899,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &708613563
 MonoBehaviour:
@@ -946,93 +946,6 @@ MonoBehaviour:
   recipe: 
   recipe_matched: 0
   game_manager: {fileID: 0}
-  player_hand: {fileID: 0}
---- !u!1 &712169055
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 712169057}
-  - component: {fileID: 712169056}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &712169056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712169055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7efb60fccc4cc449b47261152c8100a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: MainTheme
-    clip: {fileID: 8300000, guid: 2dd65e59c225d694d90d8ae8d70ccc9c, type: 3}
-    volume: 0.08
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Place
-    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: PlaceOnGrill
-    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: PlaceOnBoard
-    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Bin
-    clip: {fileID: 8300000, guid: 2c8e038a61dca3a47aff85956774fad9, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Chop
-    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: RecipeError
-    clip: {fileID: 8300000, guid: 2683f7a643c648045a292bc05632cf84, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
---- !u!4 &712169057
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712169055}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0568724, y: -0.44057822, z: -0.2713862}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   player_hand: {fileID: 0}
 --- !u!1 &928891440
 GameObject:
@@ -1384,7 +1297,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061548919
 GameObject:
@@ -1480,7 +1393,7 @@ RectTransform:
   - {fileID: 1608543796}
   - {fileID: 928891441}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2644,6 +2557,92 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &2000468671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000468673}
+  - component: {fileID: 2000468672}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2000468672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000468671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7efb60fccc4cc449b47261152c8100a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 2dd65e59c225d694d90d8ae8d70ccc9c, type: 3}
+    volume: 0.04
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Place
+    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PickUp
+    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bin
+    clip: {fileID: 8300000, guid: 2c8e038a61dca3a47aff85956774fad9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Chop
+    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlaceOnBoard
+    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlaceOnGrill
+    clip: {fileID: 8300000, guid: c5b5fa380659f6541ba8279f9782a642, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &2000468673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000468671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1069.8066, y: 371.30295, z: -140.83195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &313474895796391688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2759,7 +2758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587107540859724073, guid: 34fab41d3e490cb42847b64b6bf655f4, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6587107540859724073, guid: 34fab41d3e490cb42847b64b6bf655f4, type: 3}
       propertyPath: m_LocalPosition.x

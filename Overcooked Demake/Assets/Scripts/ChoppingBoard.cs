@@ -66,7 +66,7 @@ public class ChoppingBoard : MonoBehaviour
             PlayerInventory.UpdateHand();
 
             ClearBoard();
-
+            FindObjectOfType<AudioManager>().Play("PickUp");
 
             Debug.Log("pick up");
         }

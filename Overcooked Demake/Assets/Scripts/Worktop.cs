@@ -67,6 +67,7 @@ public class Worktop : MonoBehaviour
             else
             {
                 Debug.Log("test");
+                FindObjectOfType<AudioManager>().Play("PickUp");
                 PlayerInventory.CurrentItem = ItemOnWorktop;
                 PlayerInventory.holdingItem = true;
                 PlayerInventory.UpdateHand();
@@ -112,6 +113,7 @@ public class Worktop : MonoBehaviour
                 break;
 
         }
+        FindObjectOfType<AudioManager>().Play("Place");
         PlayerInventory.place();
         PlayerInventory.CurrentItem = FoodTypes.item.NONE;
         PlayerInventory.UpdateHand();
