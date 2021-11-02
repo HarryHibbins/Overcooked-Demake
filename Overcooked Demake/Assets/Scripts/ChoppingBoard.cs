@@ -10,8 +10,11 @@ public class ChoppingBoard : MonoBehaviour
     private SpriteRenderer CBItemRenderer;
     private bool inBox;
 
-    public Sprite ChoppedSprite;
-    public Sprite UnchoppedSprite;
+    public Sprite LettuceSprite;
+    public Sprite LettuceChoppedSprite;
+    public Sprite TomatoSprite;
+    public Sprite TomatoChoppedSprite;
+    public Sprite empty;
 
     public FoodTypes.item ItemOnBoard;
 
@@ -37,7 +40,8 @@ public class ChoppingBoard : MonoBehaviour
         }
 
         CBItemRenderer = CBItem.GetComponent<SpriteRenderer>();
-        UnchoppedSprite = CBItemRenderer.sprite;
+        //LettuceChoppedSprite = CBItemRenderer.sprite;
+        //TomatoChoppedSprite = CBItemRenderer.sprite;
         CBItemRenderer.color = new Color(0f, 0f, 0f, 0f);
         playerInteractables = player.GetComponent<PlayerInteractables>();
     }
@@ -75,7 +79,7 @@ public class ChoppingBoard : MonoBehaviour
     void ClearBoard()
     {
         ItemOnBoard = FoodTypes.item.NONE;
-        CBItemRenderer.sprite = UnchoppedSprite;
+        CBItemRenderer.sprite = empty;
         CBItemRenderer.color = new Color(0f, 0f, 0f, 0f);
         chopCount = 0;
 
@@ -86,29 +90,29 @@ public class ChoppingBoard : MonoBehaviour
         if (PlayerInventory.CurrentItem == FoodTypes.item.LETTUCE)
         {
             ItemOnBoard = FoodTypes.item.LETTUCE;
-            CBItemRenderer.sprite = UnchoppedSprite;
-            CBItemRenderer.color = new Color(0f, 255f, 0f, 1f); 
+            CBItemRenderer.sprite = LettuceSprite;
+            CBItemRenderer.color = new Color(255f, 255f, 255f, 1f); 
 
         }
         else if (PlayerInventory.CurrentItem == FoodTypes.item.TOMATO)
         {
             ItemOnBoard = FoodTypes.item.TOMATO;
-            CBItemRenderer.sprite = UnchoppedSprite;
-            CBItemRenderer.color = new Color(255f, 0, 0f, 1f);
+            CBItemRenderer.sprite = TomatoSprite;
+            CBItemRenderer.color = new Color(255f, 255f, 255f, 1f);
 
         }
         else if (PlayerInventory.CurrentItem == FoodTypes.item.CHOPPED_LETTUCE)
         {
             ItemOnBoard = FoodTypes.item.CHOPPED_LETTUCE;
-            CBItemRenderer.sprite = ChoppedSprite;
-            CBItemRenderer.color = new Color(0f, 255f, 0f, 1f); 
+            CBItemRenderer.sprite = LettuceChoppedSprite;
+            CBItemRenderer.color = new Color(255f, 255f, 255f, 1f); 
 
         }
         else if (PlayerInventory.CurrentItem == FoodTypes.item.CHOPPED_TOMATO)
         {
             ItemOnBoard = FoodTypes.item.CHOPPED_TOMATO;
-            CBItemRenderer.sprite = ChoppedSprite;
-            CBItemRenderer.color = new Color(255f, 0, 0f, 1f);
+            CBItemRenderer.sprite = TomatoChoppedSprite;
+            CBItemRenderer.color = new Color(255f, 255f, 255f, 1f);
 
         }
         
@@ -132,14 +136,16 @@ public class ChoppingBoard : MonoBehaviour
         if (chopCount == chopTarget)
         {
             choppingComplete = true;
-            CBItemRenderer.sprite = ChoppedSprite;
+            
             if (ItemOnBoard == FoodTypes.item.LETTUCE)
             {
                 ItemOnBoard = FoodTypes.item.CHOPPED_LETTUCE;
+                CBItemRenderer.sprite = LettuceChoppedSprite;
             }
             else if (ItemOnBoard == FoodTypes.item.TOMATO)
             {
                 ItemOnBoard = FoodTypes.item.CHOPPED_TOMATO;
+                CBItemRenderer.sprite = TomatoChoppedSprite;
             }
             
 

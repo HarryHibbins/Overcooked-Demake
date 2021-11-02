@@ -89,7 +89,7 @@ public class Grill : MonoBehaviour
                 break;
         }
         GRItemRenderer.sprite = CookedSprite;
-        GRItemRenderer.color = new Color32(113, 54, 0, 255);
+        GRItemRenderer.color = new Color(255f, 255f, 255f, 1f);
         slider.value = 0;
         slider.gameObject.SetActive(false);
     }

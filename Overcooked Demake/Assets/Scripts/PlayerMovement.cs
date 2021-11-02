@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float horiztonal;
     private float vertical;
     public int moveUnits;
-    private float rayLength = 1.0f;
+    private float rayLength = 0.75f;
     public SpriteRenderer spriteRenderer;
     public Sprite leftSprite;
     public Sprite rightSprite;
