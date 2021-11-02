@@ -48,6 +48,7 @@ public class StorageBox : MonoBehaviour
                     break;
 
             }
+            FindObjectOfType<AudioManager>().Play("Place");
             PlayerInventory.UpdateHand();
         }
     }

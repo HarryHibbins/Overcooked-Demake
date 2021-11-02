@@ -98,10 +98,12 @@ public class PlayerInventory : MonoBehaviour
 
     public void place()
     {
+        FindObjectOfType<AudioManager>().Play("Place");
         if (CurrentItem != FoodTypes.item.NONE)
         {
             holdingItem = false;
             ClearHand();
+           
         }
     }
 

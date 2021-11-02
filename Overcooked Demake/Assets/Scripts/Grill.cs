@@ -54,7 +54,7 @@ public class Grill : MonoBehaviour
         {
             PlayerInventory.CurrentItem = ItemOnGrill;
             PlayerInventory.UpdateHand();
-
+            FindObjectOfType<AudioManager>().Play("PickUp");
             ClearGrill();
 
         }
@@ -67,7 +67,9 @@ public class Grill : MonoBehaviour
             ItemOnGrill = FoodTypes.item.BURGER;
             GRItemRenderer.sprite = UncookedSprite;
             GRItemRenderer.color = new Color32(250, 159, 205, 255);
+            FindObjectOfType<AudioManager>().Play("PlaceOnGrill");
         }
+       
     }
 
     IEnumerator GrillItem(float time, FoodTypes.item food)
