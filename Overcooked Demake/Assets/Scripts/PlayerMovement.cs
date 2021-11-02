@@ -11,8 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private float horiztonal;
     private float vertical;
     public int moveUnits;
-    private float rayLength = 0.5f;
-
+    private float rayLength = 0.75f;
+    public SpriteRenderer spriteRenderer;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
+    public Sprite downSprite;
+    public Sprite upSprite;
+    public GameObject raycastParent;
     public GameObject RaycastObject;
     public LayerMask Environemnt;
     private bool ObjectBlocking;
@@ -37,8 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
-            
+            raycastParent.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
+            spriteRenderer.sprite = upSprite;
             isObjectBlocking();
 
             if (!ObjectBlocking)
@@ -50,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90);
-
+            raycastParent.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90);
+            spriteRenderer.sprite = leftSprite;
             isObjectBlocking();
 
             if (!ObjectBlocking)
@@ -63,8 +68,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180);
-            
+            raycastParent.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180);
+            spriteRenderer.sprite = downSprite;
             isObjectBlocking();
 
             if (!ObjectBlocking)
@@ -76,9 +81,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 270);
-            
+
+            raycastParent.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 270);
+            spriteRenderer.sprite = rightSprite;
             isObjectBlocking();
 
             if (!ObjectBlocking)
