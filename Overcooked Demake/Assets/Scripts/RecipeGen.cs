@@ -117,6 +117,7 @@ public class RecipeGen : MonoBehaviour
             return false;
         }
         // if its reached this point, the checklist recipe should have matched the ingredients on the plate, so checkrecipe is true!
+        Debug.Log("Recipe correct");
 
         return true;
     }

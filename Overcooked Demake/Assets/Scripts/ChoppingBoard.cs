@@ -145,6 +145,7 @@ public class ChoppingBoard : MonoBehaviour
 
 
             Debug.Log("item chopped");
+            choppingComplete = false;
         }
     
 
