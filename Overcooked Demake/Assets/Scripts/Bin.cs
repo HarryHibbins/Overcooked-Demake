@@ -25,6 +25,7 @@ public class Bin : MonoBehaviour
         {
             PlayerInventory.ClearHand();
             PlayerInventory.holdingItem = false;
+            FindObjectOfType<AudioManager>().Play("Bin");
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
