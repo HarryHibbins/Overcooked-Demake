@@ -24,15 +24,15 @@ public class Score : MonoBehaviour
         //--------Testing-----------
         if (Input.GetKeyDown(KeyCode.F))
         {
-            UpdateScore();
+            UpdateScore(30,20);
         }
     }
 
-    public void UpdateScore()
+    public void UpdateScore(int score_amount, int timer_amount)
     {
         //if recipe complete
-        score += 20; //Change value depending on recipe completed
-        timer.Duration += 10;//Change value depending on recipe completed
+        score += score_amount; //Change value depending on recipe completed
+        timer.Duration += timer_amount;//Change value depending on recipe completed
 
 
     }

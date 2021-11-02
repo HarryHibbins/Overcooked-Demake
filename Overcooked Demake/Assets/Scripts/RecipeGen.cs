@@ -7,10 +7,16 @@ public class RecipeGen : MonoBehaviour
 {
 
     public List<FoodTypes.recipe_item> recipe;
-    public bool recipe_matched;
+    public List<FoodTypes.recipe_item> recipe_2;
+    public List<FoodTypes.recipe_item> recipe_3;
+    public bool recipe1_matched;
+    public bool recipe2_matched;
+    public bool recipe3_matched;
     public GameObject game_manager;
     public GameObject player_hand;
 	public GameObject sprite_holder;
+	public GameObject sprite_holder_2;
+	public GameObject sprite_holder_3;
 	public Sprite LettuceSprite;
 	public Sprite TomatoSprite;
 	public Sprite BurgerSprite;
@@ -22,7 +28,11 @@ public class RecipeGen : MonoBehaviour
         game_manager = GameObject.FindGameObjectWithTag("GameManager");
         player_hand = GameObject.FindGameObjectWithTag("Hand");
 		sprite_holder = GameObject.FindGameObjectWithTag("RecipeDisplay");
-        GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time);                
+		sprite_holder_2 = GameObject.FindGameObjectWithTag("RecipeDisplay2");
+		sprite_holder_3 = GameObject.FindGameObjectWithTag("RecipeDisplay3");
+        GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder);
+        GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_2);
+        GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_3);
     }
 
     // Update is called once per frame
@@ -30,22 +40,45 @@ public class RecipeGen : MonoBehaviour
 
     {
         //check if the recipe matched bool has become true, if so reset to false and generate a new recipe and call updatescore
-        if (recipe_matched) 
+        if (recipe1_matched) 
         {
-            recipe_matched = false;
-            GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time);
-            game_manager.GetComponent<Score>().UpdateScore();
+            recipe1_matched = false;
+            GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder);
+            game_manager.GetComponent<Score>().UpdateScore(50,30);
         }
-
+        if (recipe2_matched)
+        {
+            recipe2_matched = false;
+            GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_2);
+            game_manager.GetComponent<Score>().UpdateScore(50,30);
+        }
+        if (recipe3_matched)
+        {
+            recipe3_matched = false;
+            GenerateRecipe(game_manager.GetComponent<Timer>().elapsed_time, sprite_holder_3);
+            game_manager.GetComponent<Score>().UpdateScore(50,30);
+        }
     }
 
 
-    void GenerateRecipe(float time) 
+    void GenerateRecipe(float time, GameObject recipe_number) 
     {
-        //empties recipe list before generating a new one
-        recipe.Clear();
-        //all recipes must have a plate
-        recipe.Add(FoodTypes.recipe_item.PLATE);
+        if (recipe_number == sprite_holder)
+        {
+            recipe.Clear();
+            recipe.Add(FoodTypes.recipe_item.PLATE);
+        }
+        else if (recipe_number == sprite_holder_2)
+        {
+            recipe_2.Clear();
+            recipe_2.Add(FoodTypes.recipe_item.PLATE);
+        }
+        else if (recipe_number == sprite_holder_3)
+        {
+            recipe_3.Clear();
+            recipe_3.Add(FoodTypes.recipe_item.PLATE);
+        }
+
         //refers to number of ingredients in recipe
         int complexity = 0;
         //more items as time goes on
@@ -61,81 +94,231 @@ public class RecipeGen : MonoBehaviour
         {
             complexity = 5;        
         }
-        //randomly selects ingredients for each slot in the list
-        for (int i = 0; i < complexity; i++) 
+
+        if (recipe_number == sprite_holder)
         {
-            int x = Random.Range(0, 3);
-            switch (x) 
+            for (int i = 0; i < complexity; i++)
             {
-                case 0:
-                    recipe.Add(FoodTypes.recipe_item.CHOPPED_LETTUCE);
-                    break;
-                case 1:
-                    recipe.Add(FoodTypes.recipe_item.CHOPPED_TOMATO);
-                    break;
-                case 2:
-                    recipe.Add(FoodTypes.recipe_item.COOKED_BURGER);
-                    break;
+                int x = Random.Range(0, 3);
+                switch (x)
+                {
+                    case 0:
+                        recipe.Add(FoodTypes.recipe_item.CHOPPED_LETTUCE);
+                        break;
+                    case 1:
+                        recipe.Add(FoodTypes.recipe_item.CHOPPED_TOMATO);
+                        break;
+                    case 2:
+                        recipe.Add(FoodTypes.recipe_item.COOKED_BURGER);
+                        break;
+                }
+
             }
-            
+
+            // FOR DISPLAYING ON SCREEN
+            for (int i = 0; i < 3; i++)
+            {
+                switch (recipe[i + 1])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (i).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+            if (complexity > 3)
+            {
+                switch (recipe[4])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (3).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+            if (complexity > 4)
+            {
+                switch (recipe[5])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (4).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+        }
+        else if (recipe_number == sprite_holder_2)
+        {
+            for (int i = 0; i < complexity; i++)
+            {
+                int x = Random.Range(0, 3);
+                switch (x)
+                {
+                    case 0:
+                        recipe_2.Add(FoodTypes.recipe_item.CHOPPED_LETTUCE);
+                        break;
+                    case 1:
+                        recipe_2.Add(FoodTypes.recipe_item.CHOPPED_TOMATO);
+                        break;
+                    case 2:
+                        recipe_2.Add(FoodTypes.recipe_item.COOKED_BURGER);
+                        break;
+                }
+
+            }
+
+            // FOR DISPLAYING ON SCREEN
+            for (int i = 0; i < 3; i++)
+            {
+                switch (recipe_2[i + 1])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (i).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+            if (complexity > 3)
+            {
+                switch (recipe_2[4])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (3).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+            if (complexity > 4)
+            {
+                switch (recipe_2[5])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (4).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+        }
+        else if (recipe_number == sprite_holder_3)
+        {
+            for (int i = 0; i < complexity; i++)
+            {
+                int x = Random.Range(0, 3);
+                switch (x)
+                {
+                    case 0:
+                        recipe_3.Add(FoodTypes.recipe_item.CHOPPED_LETTUCE);
+                        break;
+                    case 1:
+                        recipe_3.Add(FoodTypes.recipe_item.CHOPPED_TOMATO);
+                        break;
+                    case 2:
+                        recipe_3.Add(FoodTypes.recipe_item.COOKED_BURGER);
+                        break;
+                }
+
+            }
+
+            // FOR DISPLAYING ON SCREEN
+            for (int i = 0; i < 3; i++)
+            {
+                switch (recipe_3[i + 1])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (i).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+            if (complexity > 3)
+            {
+                switch (recipe_3[4])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (3).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
+            if (complexity > 4)
+            {
+                switch (recipe_3[5])
+                {
+                    case FoodTypes.recipe_item.CHOPPED_LETTUCE:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
+                        break;
+                    case FoodTypes.recipe_item.CHOPPED_TOMATO:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
+                        //sprite_holder.transform.GetChild (4).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
+                        break;
+                    case FoodTypes.recipe_item.COOKED_BURGER:
+                        recipe_number.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
+                        break;
+                }
+            }
         }
 
-		// FOR DISPLAYING ON SCREEN
-		for (int i = 0; i < 3; i++) 
-		{
-			switch (recipe [i + 1])
-			{
-			case FoodTypes.recipe_item.CHOPPED_LETTUCE:
-				sprite_holder.transform.GetChild (i).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
-				break;
-			case FoodTypes.recipe_item.CHOPPED_TOMATO:
-				sprite_holder.transform.GetChild (i).gameObject.GetComponent<SpriteRenderer> ().sprite = TomatoSprite;
-				//sprite_holder.transform.GetChild (i).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
-				break;
-			case FoodTypes.recipe_item.COOKED_BURGER:
-				sprite_holder.transform.GetChild (i).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
-				break;
-			}
-		}
-		if (complexity > 3) 
-		{
-			switch (recipe [4])
-			{
-			case FoodTypes.recipe_item.CHOPPED_LETTUCE:
-				sprite_holder.transform.GetChild (3).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
-				break;
-			case FoodTypes.recipe_item.CHOPPED_TOMATO:
-				sprite_holder.transform.GetChild (3).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
-				//sprite_holder.transform.GetChild (3).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
-				break;
-			case FoodTypes.recipe_item.COOKED_BURGER:
-				sprite_holder.transform.GetChild (3).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
-				break;
-			}
-		}
-		if (complexity > 4) 
-		{
-			switch (recipe [5])
-			{
-			case FoodTypes.recipe_item.CHOPPED_LETTUCE:
-				sprite_holder.transform.GetChild (4).gameObject.GetComponent<SpriteRenderer>().sprite = LettuceSprite;
-				break;
-			case FoodTypes.recipe_item.CHOPPED_TOMATO:
-				sprite_holder.transform.GetChild (4).gameObject.GetComponent<SpriteRenderer>().sprite = TomatoSprite;
-				//sprite_holder.transform.GetChild (4).transform.localScale = new Vector3 (0.1F, 0.1F, 0.1F);
-				break;
-			case FoodTypes.recipe_item.COOKED_BURGER:
-				sprite_holder.transform.GetChild (4).gameObject.GetComponent<SpriteRenderer>().sprite = BurgerSprite;
-				break;
-			}
-		}
+        //randomly selects ingredients for each slot in the list
+        
 
     }
 
     public bool CheckRecipe(List<FoodTypes.recipe_item> checklist) 
     {
-
-
+        List<FoodTypes.recipe_item> checklist_ingredients = new List<FoodTypes.recipe_item>();
+        foreach (FoodTypes.recipe_item item in checklist)
+        {
+            checklist_ingredients.Add(item);
+        }
+        Debug.Log("Test");
         //gets the plate as the child of the hand game object
 
         GameObject plate = player_hand.transform.GetChild(0).gameObject;
@@ -143,12 +326,13 @@ public class RecipeGen : MonoBehaviour
         //if the player is not holding a plate than checkrecipe is false
         if (plate == null) 
         {
-
+            Debug.Log("no plate");
             return false;
+            
 
         }
         //create a list to store all ingredients on the plate
-        List<GameObject> held_ingredients = null;
+        List<GameObject> held_ingredients = new List<GameObject>();
         foreach (Transform child in plate.transform)
         {
                 held_ingredients.Add(child.gameObject);            
@@ -156,27 +340,30 @@ public class RecipeGen : MonoBehaviour
         //loops through every ingredient on the plate
         foreach (GameObject ingredient in held_ingredients) 
         {
-            //if the plate still has more ingredients on it but the recipe on has plate left, then the player has too many and checkrecipe is false
-            if (checklist.Count == 1) 
-            {
-                return false;            
-            }
             //then it checks each ingredient in the recipe and if it finds one that matches the currently checked ingredient on the plate it removes it from the checklist and then breaks to move
             //              on to the next held ingredient
-            foreach (FoodTypes.recipe_item required_item in checklist) 
+            foreach (FoodTypes.recipe_item required_item in checklist_ingredients) 
             {
-                if (ingredient.tag == held_ingredients.ToString()) 
+                if (ingredient.tag == required_item.ToString()) 
                 {
-                    checklist.Remove(required_item);
-                    break;
+                    checklist_ingredients.Remove(required_item);
+                    Debug.Log("break");
+                    break; 
                 }
             }
-            //if it reaches this point the item on the plate was not in the checklist, so return false
-            return false;
         }
-        // if its reached this point, the checklist recipe should have matched the ingredients on the plate, so checkrecipe is true!
-        Debug.Log("Recipe correct");
 
-        return true;
+        if (checklist_ingredients.Count != 1)
+        {
+            Debug.Log("False noooo");
+            return false;
+            
+        }
+        else
+        {
+            Debug.Log("True yesssss");
+            return true;
+            
+        }
     }
 }
