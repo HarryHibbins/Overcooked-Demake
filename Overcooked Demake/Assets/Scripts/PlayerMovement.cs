@@ -21,12 +21,15 @@ public class PlayerMovement : MonoBehaviour
     public GameObject RaycastObject;
     public LayerMask Environemnt;
     private bool ObjectBlocking;
+    private GameObject hand;
     
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = player.GetComponent<Rigidbody2D>();
+        hand = GameObject.FindWithTag("Hand");
+        
 
         speed = 10f;
 
@@ -52,7 +55,14 @@ public class PlayerMovement : MonoBehaviour
                     transform.position.z);
 
             }
-        }
+
+            if (hand.transform.position != new Vector3(2.7f, -0.4f, 0))
+            {
+                spriteRenderer.sortingOrder = 5;
+                hand.transform.localPosition = new Vector3(2.7f, -0.4f, 0);
+            }
+            
+    }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             raycastParent.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90);
@@ -63,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x - moveUnits, transform.position.y ,
                     transform.position.z);
+            }
+            
+            if (hand.transform.position != new Vector3(-2f, -1.5f, 0))
+            {
+                spriteRenderer.sortingOrder = 3;
+                hand.transform.localPosition = new Vector3(-2, -1.5f, 0);
             }
             
         }
@@ -78,6 +94,12 @@ public class PlayerMovement : MonoBehaviour
                     transform.position.z);
             }
             
+            if (hand.transform.position != new Vector3(-1.5f, -2.3f, 0))
+            {
+                spriteRenderer.sortingOrder = 3;
+                hand.transform.localPosition = new Vector3(-1.5f, -2.3f, 0);
+            }
+            
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
@@ -90,6 +112,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x + moveUnits, transform.position.y ,
                     transform.position.z); 
+            }
+            
+            if (hand.transform.position != new Vector3(2.2f, -1.5f, 0))
+            {
+                spriteRenderer.sortingOrder = 3;
+                hand.transform.localPosition = new Vector3(2.2f, -1.5f, 0);
             }
         }
 
