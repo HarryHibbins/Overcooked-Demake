@@ -17,6 +17,7 @@ public class Grill : MonoBehaviour
     private SpriteRenderer GRItemRenderer;
     public Sprite CookedSprite;
     public Sprite UncookedSprite;
+    public float cookTime = 8.0f;
     
     public Slider slider;
 
@@ -48,7 +49,7 @@ public class Grill : MonoBehaviour
             PlaceOnGrill();
             PlayerInventory.place();
             FindObjectOfType<AudioManager>().Play("PlaceOnGrill");
-            StartCoroutine(GrillItem(5.0f, FoodTypes.item.BURGER));
+            StartCoroutine(GrillItem(cookTime, FoodTypes.item.BURGER));
         }
         else if (inBox && playerInteractables.canUseGrill && Input.GetButtonDown("Interact") && !PlayerInventory.holdingItem &&
                  ItemOnGrill == FoodTypes.item.COOKED_BURGER)
