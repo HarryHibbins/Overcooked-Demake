@@ -3382,7 +3382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ac3f3cfb19a4d4db2ce861c1629df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Duration: 180
+  Duration: 60
   elapsed_time: 0
   TimerText: {fileID: 1608543797}
 --- !u!114 &708613564

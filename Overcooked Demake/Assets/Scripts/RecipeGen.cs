@@ -88,15 +88,15 @@ public class RecipeGen : MonoBehaviour
     {
         if (complexity == 3)
         {
-            game_manager.GetComponent<Score>().UpdateScore(50, 30);
+            game_manager.GetComponent<Score>().UpdateScore(50, 15);
         }
         else if (complexity == 4)
         {
-            game_manager.GetComponent<Score>().UpdateScore(100, 30);
+            game_manager.GetComponent<Score>().UpdateScore(100, 20);
         }
         else if (complexity == 5)
         {
-            game_manager.GetComponent<Score>().UpdateScore(200, 45);
+            game_manager.GetComponent<Score>().UpdateScore(200, 25);
         }
     }
 
