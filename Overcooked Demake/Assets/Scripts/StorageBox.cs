@@ -62,7 +62,6 @@ public class StorageBox : MonoBehaviour
 
         if (other.gameObject.transform == player.transform)
         {
-            Debug.Log("WAGWAN MY DRILLA");
             inBox = true;
         }
     }
