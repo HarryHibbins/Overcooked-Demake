@@ -70,7 +70,7 @@ public class ChoppingBoard : MonoBehaviour
             PlayerInventory.UpdateHand();
 
             ClearBoard();
-
+            FindObjectOfType<AudioManager>().Play("PickUp");
 
             Debug.Log("pick up");
         }
@@ -116,7 +116,7 @@ public class ChoppingBoard : MonoBehaviour
 
         }
         
-        
+        FindObjectOfType<AudioManager>().Play("PlaceOnBoard");
     }
 
     private void Chop()
@@ -125,12 +125,14 @@ public class ChoppingBoard : MonoBehaviour
         if (!spacePressed && !choppingComplete)
         {
             spacePressed = true;
+            FindObjectOfType<AudioManager>().Play("Chop");
             chopCount++;
         }
 
         else if (spacePressed&& !choppingComplete)
         {
             spacePressed = false;
+            
         }
         
         if (chopCount == chopTarget)

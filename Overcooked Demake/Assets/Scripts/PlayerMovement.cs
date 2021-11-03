@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
                 hand.transform.localPosition = new Vector3(2.2f, -1.5f, 0);
             }
         }
-
+        
         ObjectBlocking = false;
 
 
@@ -138,4 +138,6 @@ public class PlayerMovement : MonoBehaviour
             ObjectBlocking = true;
         }
     }
+    
+    
 }

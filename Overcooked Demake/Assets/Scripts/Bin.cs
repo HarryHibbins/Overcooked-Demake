@@ -27,6 +27,7 @@ public class Bin : MonoBehaviour
             PlayerInventory.holdingItem = false;
             PlayerInventory.CurrentItem = FoodTypes.item.NONE;
 
+            FindObjectOfType<AudioManager>().Play("Bin");
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
